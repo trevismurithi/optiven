@@ -10,16 +10,18 @@
 <body>
 <div style="width:90%;margin:20px auto;">
   <form>
-    <label for="places">Location</label>
+    <label for="places">Project of Interest</label>
     <select id="places" name="places" required>
     </select>
     <label for="deposit">Deposit</label>
     <input type="number" id="deposit" name="deposit" placeholder="Deposit" required>
     <div class="error_class hide"></div>
+    <br>
     <label for="months">Month</label>
     <select id="months" class="months" name="months">
     </select>
     <div class="error_class_form hide"></div>
+    <br>
     <input type="submit" value="Submit" id="submit">
   </form>
   <br>

@@ -232,8 +232,6 @@ let totalAmount = 0
 let installment = 0
 let totalPurchase = 0
 //append respective values
-let totalAmountP = document.createElement('p')
-let totalPurchaseP = document.createElement('p')
 let installmentP = document.createElement('p')
 
 function numberWithCommas(x) {
@@ -260,9 +258,6 @@ function fixedMonthMethod() {
 //fixed function formulae
 function fixedFormulaeMethod() {
     fixedMonthMethod()
-    //hide the totalAmountP and totalPurchaseP
-    totalAmountP.classList.add('hide')
-    totalPurchaseP.classList.add('hide')
     //display information
     installmentP.innerHTML = `Your Installment is: Ksh ${numberWithCommas(installment)}`
 }
@@ -270,12 +265,6 @@ function fixedFormulaeMethod() {
 function unfixedFormulaeMethod() {
     monthFormulaeMethod()
     // part 1
-    totalAmountP.classList.remove('hide')
-    totalAmountP.innerHTML = `Total Amount is: Ksh ${numberWithCommas(totalAmount)}`
-    // part 2
-    totalPurchaseP.classList.remove('hide')
-    totalPurchaseP.innerHTML = `Total Purchase is: Ksh ${numberWithCommas(totalPurchase)}`
-    // part 3
     installmentP.classList.remove('hide')
     installmentP.innerHTML = `Your installment is: Ksh ${numberWithCommas(installment)}`
 }
@@ -304,6 +293,4 @@ submit.addEventListener('click', (e)=>{
 
 //create the default list
 createAllMonths()
-resultDiv.appendChild(totalAmountP)
-resultDiv.appendChild(totalPurchaseP)
 resultDiv.appendChild(installmentP)

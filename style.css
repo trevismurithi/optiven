@@ -8,6 +8,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type=submit] {
@@ -19,6 +20,7 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type=submit]:hover {
@@ -29,6 +31,7 @@ div {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .error_class, .error_class_form{
