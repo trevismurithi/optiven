@@ -9,109 +9,160 @@ let isFixed = false
 //attach the places with values
 const places = [
     {
-        name: 'Amani Ridge, Kiambu - Ksh 7.260M',
+        name: 'Amani Ridge, Kiambu',
         value: 7260000,
         min: 2178000,
         period:12,
         fixedPeriod: null 
     },
     {
-        name: 'South Lake Villas, Naivasha - Ksh 5.995M',
+        name: 'South Lake Villas, Naivasha',
         value: 5995000,
         min:1798500,
         period: 12,
         fixedPeriod: null 
     },
     {
-        name: 'Success Gardens, Gatanga Rd - Ksh 2.695M',
+        name: 'Success Gardens, Gatanga Rd',
         value: 2695000,
         min: 700000,
         period: 12,
         fixedPeriod: null 
     },
     {
-        name: 'Victory Gardens Kitengela - Ksh 2.495M',
+        name: 'Victory Gardens Kitengela',
         value: 2495000,
         min: 700000,
         period: 12,
         fixedPeriod: null
     },
     {
-        name: 'Happy Gardens Kitengela - Ksh 1.795M',
+        name: 'Happy Gardens Kitengela',
         value: 1795000,
         min: 538500,
         period: 12,
         fixedPeriod: null
     },
     {
-        name: 'Garden of Joy Kangundo Rd - Ksh 1.495M',
+        name: 'Garden of Joy Kangundo Rd',
         value: 1495000,
         min: 500000,
         period: 12,
         fixedPeriod: null
     },
     {
-        name: 'Shalom Gardens Phase 2 Kantafu - Ksh 1.295M',
+        name: 'Shalom Gardens Phase 2 Kantafu',
         value: 1295000,
         min: 388500,
         period: 6,
         fixedPeriod: null
     },
     {
-        name: 'Abundance Gardens, Konza - Ksh 995,000',
+        name: 'Abundance Gardens, Konza',
         value: 995000,
         min: 497500,
         period: 6,
         fixedPeriod: null
     },
     {
-        name: 'Celebration Gardens, Kitengela - Ksh 1.295M',
+        name: 'Celebration Gardens, Kitengela',
         value: 129500,
         min: 388500,
         period: 12,
         fixedPeriod: null
     },
     {
-        name: 'Heshima Commercial Plots, Kajiado - Ksh 899,000',
+        name: 'Heshima Commercial Plots, Kajiado',
         value: 899000,
         min: 449500,
         period: 0,
-        fixedPeriod: [6,12]
+        fixedPeriod: [6,12],
+        projection: {
+            6:{
+                value: 950000
+            },
+            12:{
+                value: 1150000
+            }
+        }
     },
     {
-        name: 'Love Gardens, Kajiado - Ksh 795,000',
+        name: 'Love Gardens, Kajiado',
         value: 795000,
         min: 238500,
         period: 0,
-        fixedPeriod: [6]
+        fixedPeriod: [6],
+        projection: {
+            6: {
+                value: 995000
+            },
+        }
     },
     {
-        name: 'Peace Breeze Gardens, Konza - Ksh 695,000',
+        name: 'Peace Breeze Gardens, Konza',
         value: 695000,
         min: 200000,
         period: 0,
-        fixedPeriod: [3,6]
+        fixedPeriod: [3,6],
+        projection: {
+            3: {
+                value: 725000
+            },
+            6: {
+                value: 755000
+            }
+        }
     },
     {
-        name: 'Malindi Breeze, Phase 2 - Ksh 499,000',
+        name: 'Malindi Breeze, Phase 2',
         value: 499000,
         min: 250000,
         period: 0,
-        fixedPeriod: [3, 6]
+        fixedPeriod: [3, 6],
+        projection: {
+            3: {
+                value: 529000
+            },
+            6: {
+                value: 559000
+            },
+        }
     },
     {
-        name: 'Wema Gardens, Naro Moru - Ksh 399,000',
+        name: 'Wema Gardens, Naro Moru',
         value: 399000,
         min: 200000,
         period: 0,
-        fixedPeriod: [3, 6, 12]
+        fixedPeriod: [3, 6, 12],
+        projection: {
+            3: {
+                value: 415000
+            },
+            6: {
+                value: 425000
+            },
+            12: {
+                value: 450000
+            }
+        }
     },
     {
-        name: 'Great Oasis Gardens, Nanyuki - Ksh 349,000',
+        name: 'Great Oasis Gardens, Nanyuki',
         value: 349000,
         min: 200000,
         period: 0,
-        fixedPeriod: [3, 6, 12]
+        fixedPeriod: [3, 6, 12],
+        projection: {
+            3: {
+                value: 359000
+            },
+            6: {
+                value: 369000
+            },
+            12: {
+                value: 399000
+            }
+        }
     },
 ]
 
@@ -197,13 +248,13 @@ const errorMessageOverall = document.querySelector('.error_class_form')
 function monthFormulaeMethod() {
     let balance = parseInt(locationArea.value) - parseInt(depositInput.value)
     let monthVal = parseInt(months.value)
-    totalAmount = (1.0 + (monthVal / 100)) * balance
+    totalAmount = Math.round((1.0 + (monthVal / 100)) * balance)
     installment = Math.round(totalAmount / monthVal)
     totalPurchase = totalAmount + parseInt(depositInput.value)
 }
 function fixedMonthMethod() {
-    let balance = parseInt(locationArea.value) - parseInt(depositInput.value)
     let monthVal = parseInt(months.value)
+    let balance = locationArea.projection[monthVal].value - parseInt(depositInput.value)
     installment = Math.round(balance / monthVal)
 }
 //fixed function formulae
@@ -213,20 +264,20 @@ function fixedFormulaeMethod() {
     totalAmountP.classList.add('hide')
     totalPurchaseP.classList.add('hide')
     //display information
-    installmentP.innerHTML = `your installment is ${numberWithCommas(installment)}`
+    installmentP.innerHTML = `Your Installment is: Ksh ${numberWithCommas(installment)}`
 }
 
 function unfixedFormulaeMethod() {
     monthFormulaeMethod()
     // part 1
     totalAmountP.classList.remove('hide')
-    totalAmountP.innerHTML = `Total amount is ${numberWithCommas(totalAmount)}`
+    totalAmountP.innerHTML = `Total Amount is: Ksh ${numberWithCommas(totalAmount)}`
     // part 2
     totalPurchaseP.classList.remove('hide')
-    totalPurchaseP.innerHTML = `Total purchase is ${numberWithCommas(totalPurchase)}`
+    totalPurchaseP.innerHTML = `Total Purchase is: Ksh ${numberWithCommas(totalPurchase)}`
     // part 3
     installmentP.classList.remove('hide')
-    installmentP.innerHTML = `your installment is ${numberWithCommas(installment)}`
+    installmentP.innerHTML = `Your installment is: Ksh ${numberWithCommas(installment)}`
 }
 submit.addEventListener('click', (e)=>{
     e.preventDefault()
