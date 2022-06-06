@@ -233,6 +233,9 @@ let installment = 0
 let totalPurchase = 0
 //append respective values
 let installmentP = document.createElement('p')
+let depositP = document.createElement('p')
+let paymentP = document.createElement('p')
+let plotSizeP = document.createElement('p')
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -259,14 +262,19 @@ function fixedMonthMethod() {
 function fixedFormulaeMethod() {
     fixedMonthMethod()
     //display information
-    installmentP.innerHTML = `Your Installment is: Ksh ${numberWithCommas(installment)}`
+    plotSizeP.innerHTML = '<span>Plot Size:</span> 1/8 acre'
+    depositP.innerHTML = `<span>Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
+    paymentP.innerHTML = `<span>Payment Period:</span> ${months.value} month(s)`
+    installmentP.innerHTML = `<span>Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
 }
 
 function unfixedFormulaeMethod() {
     monthFormulaeMethod()
-    // part 1
-    installmentP.classList.remove('hide')
-    installmentP.innerHTML = `Your installment is: Ksh ${numberWithCommas(installment)}`
+    //display information
+    plotSizeP.innerHTML = '<span>Plot Size:</span> 1/8 acre'
+    depositP.innerHTML = `<span>Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
+    paymentP.innerHTML = `<span>Payment Period:</span> ${months.value} month(s)`
+    installmentP.innerHTML = `<span>Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
 }
 submit.addEventListener('click', (e)=>{
     e.preventDefault()
@@ -293,4 +301,7 @@ submit.addEventListener('click', (e)=>{
 
 //create the default list
 createAllMonths()
+resultDiv.appendChild(plotSizeP)
+resultDiv.appendChild(depositP)
+resultDiv.appendChild(paymentP)
 resultDiv.appendChild(installmentP)
