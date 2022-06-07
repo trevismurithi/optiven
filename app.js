@@ -10,6 +10,7 @@ let isFixed = false
 const places = [
     {
         name: 'Amani Ridge, Kiambu',
+        size: '1/8',
         value: 7260000,
         min: 2178000,
         period:12,
@@ -17,6 +18,7 @@ const places = [
     },
     {
         name: 'South Lake Villas, Naivasha',
+        size: '1/4',
         value: 5995000,
         min:1798500,
         period: 12,
@@ -24,6 +26,7 @@ const places = [
     },
     {
         name: 'Success Gardens, Gatanga Rd',
+        size: '1/8',
         value: 2695000,
         min: 700000,
         period: 12,
@@ -31,6 +34,7 @@ const places = [
     },
     {
         name: 'Victory Gardens Kitengela',
+        size: '1/8',
         value: 2495000,
         min: 700000,
         period: 12,
@@ -38,6 +42,7 @@ const places = [
     },
     {
         name: 'Happy Gardens Kitengela',
+        size: '1/8',
         value: 1795000,
         min: 538500,
         period: 12,
@@ -45,6 +50,7 @@ const places = [
     },
     {
         name: 'Garden of Joy Kangundo Rd',
+        size: '1/8',
         value: 1495000,
         min: 500000,
         period: 12,
@@ -52,6 +58,7 @@ const places = [
     },
     {
         name: 'Shalom Gardens Phase 2 Kantafu',
+        size: '1/8',
         value: 1295000,
         min: 388500,
         period: 6,
@@ -59,6 +66,7 @@ const places = [
     },
     {
         name: 'Abundance Gardens, Konza',
+        size: '1/8',
         value: 995000,
         min: 497500,
         period: 6,
@@ -66,6 +74,7 @@ const places = [
     },
     {
         name: 'Celebration Gardens, Kitengela',
+        size: '1/8',
         value: 1295000,
         min: 388500,
         period: 12,
@@ -73,6 +82,7 @@ const places = [
     },
     {
         name: 'Heshima Commercial Plots, Kajiado',
+        size: '1/8',
         value: 899000,
         min: 449500,
         period: 0,
@@ -88,6 +98,7 @@ const places = [
     },
     {
         name: 'Love Gardens, Kajiado',
+        size: '1/8',
         value: 795000,
         min: 238500,
         period: 0,
@@ -100,6 +111,7 @@ const places = [
     },
     {
         name: 'Peace Breeze Gardens, Konza',
+        size: '1/8',
         value: 695000,
         min: 200000,
         period: 0,
@@ -115,6 +127,7 @@ const places = [
     },
     {
         name: 'Malindi Breeze, Phase 2',
+        size: '1/8',
         value: 499000,
         min: 250000,
         period: 0,
@@ -130,6 +143,7 @@ const places = [
     },
     {
         name: 'Wema Gardens, Naro Moru',
+        size: '1/8',
         value: 399000,
         min: 200000,
         period: 0,
@@ -148,6 +162,7 @@ const places = [
     },
     {
         name: 'Great Oasis Gardens, Nanyuki',
+        size: '1/8',
         value: 349000,
         min: 200000,
         period: 0,
@@ -268,7 +283,7 @@ function fixedMonthMethod() {
 function fixedFormulaeMethod() {
     fixedMonthMethod()
     //display information
-    plotSizeP.innerHTML = '<span class="__span">Plot Size:</span> 1/8 acre'
+    plotSizeP.innerHTML = `<span class="__span">Plot Size:</span> ${locationArea.size} acre`
     depositP.innerHTML = `<span class="__span">Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
     paymentP.innerHTML = `<span class="__span">Payment Period:</span> ${months.value} month(s)`
     installmentP.innerHTML = `<span class="__span">Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
@@ -277,7 +292,7 @@ function fixedFormulaeMethod() {
 function unfixedFormulaeMethod() {
     monthFormulaeMethod()
     //display information
-    plotSizeP.innerHTML = '<span class="__span">Plot Size:</span> 1/8 acre'
+    plotSizeP.innerHTML = `<span class="__span">Plot Size:</span> ${locationArea.size} acre`
     depositP.innerHTML = `<span class="__span">Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
     paymentP.innerHTML = `<span class="__span">Payment Period:</span> ${months.value} month(s)`
     installmentP.innerHTML = `<span class="__span">Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
