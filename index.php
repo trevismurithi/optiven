@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<div style="width:90%;margin:20px auto;">
+<div class="__container" style="width:90%;margin:20px auto;">
   <form>
     <label for="places">Project of Interest</label>
     <select id="places" name="places" required>

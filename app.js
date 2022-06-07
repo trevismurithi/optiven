@@ -66,7 +66,7 @@ const places = [
     },
     {
         name: 'Celebration Gardens, Kitengela',
-        value: 129500,
+        value: 1295000,
         min: 388500,
         period: 12,
         fixedPeriod: null
@@ -182,11 +182,16 @@ function createAllMonths(){
     }
 }
 
-function showAllMonths() {
+function showAllMonths(cNodesLength) {
     months.value = 1
     for (let index = 1; index <= months.children.length; index++) {
-        months.children[index - 1].classList.remove('hide')
-        months.children[index - 1].classList.add('show')
+        if(cNodesLength >= index){
+            months.children[index - 1].classList.remove('hide')
+            months.children[index - 1].classList.add('show')
+        }else{
+            months.children[index - 1].classList.remove('show')
+            months.children[index - 1].classList.add('hide')
+        }
     }  
 }
 
@@ -218,9 +223,10 @@ locations.addEventListener('change', (e) => {
             //set minimum value for deposit
             depositInput.setAttribute('min', place.min)
             if(place.fixedPeriod === null){
-                //calling the restrict
-                showAllMonths()
+                //check for the limit
+                showAllMonths(place.period)
             }else{
+                //calling the restrict
                 restrictedMonths(place.fixedPeriod)
             }
         }
@@ -262,19 +268,19 @@ function fixedMonthMethod() {
 function fixedFormulaeMethod() {
     fixedMonthMethod()
     //display information
-    plotSizeP.innerHTML = '<span>Plot Size:</span> 1/8 acre'
-    depositP.innerHTML = `<span>Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
-    paymentP.innerHTML = `<span>Payment Period:</span> ${months.value} month(s)`
-    installmentP.innerHTML = `<span>Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
+    plotSizeP.innerHTML = '<span class="__span">Plot Size:</span> 1/8 acre'
+    depositP.innerHTML = `<span class="__span">Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
+    paymentP.innerHTML = `<span class="__span">Payment Period:</span> ${months.value} month(s)`
+    installmentP.innerHTML = `<span class="__span">Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
 }
 
 function unfixedFormulaeMethod() {
     monthFormulaeMethod()
     //display information
-    plotSizeP.innerHTML = '<span>Plot Size:</span> 1/8 acre'
-    depositP.innerHTML = `<span>Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
-    paymentP.innerHTML = `<span>Payment Period:</span> ${months.value} month(s)`
-    installmentP.innerHTML = `<span>Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
+    plotSizeP.innerHTML = '<span class="__span">Plot Size:</span> 1/8 acre'
+    depositP.innerHTML = `<span class="__span">Initial Deposit:</span> Ksh. ${numberWithCommas(parseInt(depositInput.value))}`
+    paymentP.innerHTML = `<span class="__span">Payment Period:</span> ${months.value} month(s)`
+    installmentP.innerHTML = `<span class="__span">Your Monthly Installment:</span> Ksh. ${numberWithCommas(installment)}`
 }
 submit.addEventListener('click', (e)=>{
     e.preventDefault()
