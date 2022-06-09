@@ -1,5 +1,7 @@
 const locations = document.querySelector('#__places')
-if (!!locations){
+if (!locations) {
+    const project_name = document.querySelector('#__object_type')
+    const index = parseInt(project_name.value)
     const submit = document.querySelector('#__submit')
     const months = document.querySelector('#__months')
     const depositInput = document.querySelector('#__deposit')
@@ -180,9 +182,9 @@ if (!!locations){
             }
         },
     ]
-
     //set the location
-    let locationArea = places[0]
+    let locationArea = places[index]
+    project_name.innerHTML = `<span class="__span">Project of Interest:</span> ${locationArea.name}`
     depositInput.setAttribute('min', locationArea.min)
 
     function createAllMonths() {
@@ -221,33 +223,6 @@ if (!!locations){
                 months.children[index - 1].classList.add('hide')
         }
     }
-
-    places.forEach(place => {
-        //append places
-        let area = document.createElement('option')
-        area.innerText = place.name
-        area.value = place.name
-        locations.appendChild(area)
-    })
-
-    //change event listener for dropdown
-    locations.addEventListener('change', (e) => {
-        places.forEach(place => {
-            if (place.name === locations.value) {
-                locationArea = place
-                //set minimum value for deposit
-                depositInput.setAttribute('min', place.min)
-                if (place.fixedPeriod === null) {
-                    //check for the limit
-                    showAllMonths(place.period)
-                } else {
-                    //calling the restrict
-                    restrictedMonths(place.fixedPeriod)
-                }
-            }
-        })
-    })
-
 
     let totalAmount = 0
     let installment = 0
@@ -320,8 +295,16 @@ if (!!locations){
         }
     })
 
+
     //create the default list
     createAllMonths()
+    if (locationArea.fixedPeriod === null) {
+        //check for the limit
+        showAllMonths(locationArea.period)
+    } else {
+        //calling the restrict
+        restrictedMonths(locationArea.fixedPeriod)
+    }
     resultDiv.appendChild(plotSizeP)
     resultDiv.appendChild(depositP)
     resultDiv.appendChild(paymentP)

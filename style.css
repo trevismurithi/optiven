@@ -1,6 +1,6 @@
-#places,
-#deposit,
-#months {
+#__places,
+#__deposit,
+#__months {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -11,7 +11,15 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#submit {
+#__object_type{
+    border: none;
+    margin: 10px 0px;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+#__submit {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -23,7 +31,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#submit:hover {
+#__submit:hover {
     background-color: #284129;
 }
 
